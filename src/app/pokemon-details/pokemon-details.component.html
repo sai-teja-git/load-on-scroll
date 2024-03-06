@@ -1,0 +1,53 @@
+@if (selected_data) {
+<div class="pokemon-data">
+    <div class="image">
+        <img [src]="selected_data.data?.sprites?.other?.dream_world?.front_default" class="card-img-top"
+            [alt]="selected_data.name">
+    </div>
+    <div class="details">
+        <div class="details-block">
+            <h5>Type</h5>
+            <ul class="list-group">
+                @for (type of selected_data.data?.types; track (type.slot)){
+                <li class="list-group-item">{{type?.type?.name}}</li>
+                }
+            </ul>
+        </div>
+        <div class="details-block">
+            <h5>Abilities</h5>
+            <ul class="list-group">
+                @for (ability of selected_data.data?.abilities; track (ability.ability?.name)){
+                <li class="list-group-item">{{ability.ability?.name}}</li>
+                }
+            </ul>
+        </div>
+        <div class="details-block">
+            <h5>Stats</h5>
+            <ul class="list-group">
+                @for (stat of selected_data.data?.stats; track (stat?.stat?.name)){
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <i [class]="(stat?.stat?.name|statIcon)+' me-2'"></i> {{stat?.stat?.name}}
+                    </div>
+                    <span class="badge text-bg-primary rounded-pill">{{stat?.base_stat}}</span>
+                </li>
+                }
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-weight-scale me-2"></i> weight
+                    </div>
+                    <span class="badge text-bg-primary rounded-pill">{{selected_data.data?.weight}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="details-block">
+            <h5>Moves</h5>
+            <ul class="list-group scroll-block">
+                @for (move of selected_data.data?.moves; track (move.move?.name)){
+                <li class="list-group-item">{{move.move?.name}}</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+}
