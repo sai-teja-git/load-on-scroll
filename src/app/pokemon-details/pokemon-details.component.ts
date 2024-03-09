@@ -43,6 +43,4 @@ export class PokemonDetailsComponent {
 
   @Input() selected_data: any;
 
-
-
 }
